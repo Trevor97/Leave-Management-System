@@ -1,0 +1,33 @@
+body {
+    font-family: "Poppins", sans-serif ;
+    color: rgb(34, 34, 34);
+    background-color: #F5F2EA;
+    font-weight: 400;
+  }
+
+  .login-card{
+    margin-top: 30%;
+    border: 0;
+  }
+
+  .header-text{
+    font-weight: 700;
+  }
+
+  .sub-text{
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .login-input{
+    margin-bottom: 1rem;
+  }
+
+  .btn-success{
+    background-color: #66d670 !important;
+    border: 0;
+  }
+
+  .btn-success:active{
+    background-color: #59af60 !important;
+    border: 0;
+  }
