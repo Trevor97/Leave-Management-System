@@ -6,7 +6,12 @@ body {
   }
 
   .login-card{
-    margin-top: 30%;
+    margin-top: 40%;
+    border: 0;
+  }
+
+  .leave-card{
+    margin-top: 2%;
     border: 0;
   }
 
@@ -18,16 +23,40 @@ body {
     font-size: 0.8rem;
     font-weight: 600;
   }
+
+  .footer-text{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgb(155, 155, 155);
+    margin-top: 2rem;
+  }
   .login-input{
+    margin-bottom: 1rem;
+  }
+
+  .app-input{
     margin-bottom: 1rem;
   }
 
   .btn-success{
     background-color: #66d670 !important;
+    font-size: 0.9rem;
+    color: black;
+    font-weight: 600;
     border: 0;
   }
 
-  .btn-success:active{
+  .btn-success:hover{
     background-color: #59af60 !important;
+    font-size: 0.9rem;
+    color: black;
+    font-weight: 600;
     border: 0;
+  }
+
+  .app-btn{
+    margin-top: 0.5rem;
+  }
+  .alert-success{
+    background-color: #ccf8d0 !important;
   }
