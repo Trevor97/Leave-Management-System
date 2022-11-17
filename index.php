@@ -17,11 +17,11 @@
                     <div class="card-body">
                         <h4 class="header-text text-center">Staff Login</h4>
                         <p>Please login to continue</p>
-                        <form action="" method="post" class="form-group">
+                        <form action="application.php" method="post" class="form-group">
                             <input type="email" name="email" id="email" class="form-control login-input" required>
                             <input type="password" name="password" id="password" class="form-control login-input" required>
                             <div class="d-grid gap-2">
-                                <button class="btn btn-success login-input" type="button">Log In</button>
+                                <button class="btn btn-success login-input" type="submit">Log In</button>
                             </div>
                         </form>
                         <p class="sub-text">Don't have an account? <a href="">Request Now</a></p>
