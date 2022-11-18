@@ -15,6 +15,16 @@ body {
     border: 0;
   }
 
+  .admin-left-card{
+    margin-top: 10%;
+    border: 0;
+  }
+
+  .admin-container{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+  }
+
   .header-text{
     font-weight: 700;
   }
@@ -59,4 +69,78 @@ body {
   }
   .alert-success{
     background-color: #ccf8d0 !important;
+  }
+
+  .hr{
+    margin-block-start: 0rem !important;
+    margin-block-end: 0.5rem !important;
+  }
+
+  .space-top{
+    margin-top: 0.3rem;
+  }
+
+  .card-h0{
+    font-weight: 700;
+    font-size: 3rem;
+    height: fit-content;
+    line-height: 0.8rem;
+    color: #686760;
+  }
+  
+  .card-h1{
+    font-weight: 700;
+    font-size: 1.2rem;
+    height: fit-content;
+    line-height: 0.8rem;
+    color: #686760;
+  }
+  
+  .card-h2{
+    font-weight: 500;
+    font-size: 0.8rem;
+    height: fit-content;
+    line-height: 0.4rem;
+    color: #aaa894;
+  }
+
+  .card-h6{
+    font-weight: 500;
+    font-size: 0.45rem;
+    color: #aaa894;
+  }
+
+  .accept-btn{
+    text-decoration: none;
+    color: #59af60;
+  }
+
+  .decline-btn{
+    text-decoration: none;
+    color: #af5959;
+  }
+  
+  .accept-btn:hover{
+    text-decoration: none;
+    color: #368f3d;
+  }
+
+  .decline-btn:hover{
+    text-decoration: none;
+    color: #832f2f;
+  }
+
+  .request-card{
+    border-radius: 1.3rem;
+    border: 1px solid #f3f3f3a9;
+  }
+
+  .grey-text{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #686760;
+  }
+
+  .days-taken-margin{
+    margin-top: 1.3rem !important;
   }
