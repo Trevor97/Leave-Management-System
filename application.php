@@ -12,9 +12,6 @@
         $email = $rows['email'];
         $phone_number = $rows['phone_number'];
         $p_o_box = $rows['p_o_box'];
-        $departmental_head = $rows['departmental_head'];
-        $branch_manager = $rows['branch_manager'];
-        $chief_executive_officer = $rows['chief_executive_officer'];
         $days_entitled = $rows['days_entitled'];
     }
 
@@ -208,13 +205,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <textarea name="contact_address" id="contact_address" placeholder="Contact Address" class="form-control app-input" autocomplete="off"></textarea>
+                                    <textarea name="contact_address" id="contact_address" placeholder="Contact Address" class="form-control app-input" autocomplete="off"><?php echo $p_o_box?></textarea>
                                     <label for="contact_address">Enter Contact Address</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" name="contact_number" id="contact_number" placeholder="Contact Number" class="form-control app-input" autocomplete="off"/>
+                                    <input type="text" name="contact_number" id="contact_number" placeholder="Contact Number" value="<?php echo $phone_number?>" class="form-control app-input" autocomplete="off"/>
                                     <label for="contact_number">Enter Contact Number</label>
                                 </div>
                             </div>
