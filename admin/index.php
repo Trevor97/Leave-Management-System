@@ -4,17 +4,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <?php include_once "../includes/head_include.php"; ?>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="../style/style.css">
     <title>Super User | Rhino Leave Management System</title>
 </head>
 <body>
     <div class="container admin-container">
+        <div class="row">
+            <nav class="navbar navbar-expand-sm bg-light navbar-light">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="card admin-left-card">
@@ -29,7 +47,9 @@
                         </div>
                         <div class="row">
                             <?php
-                                $Query01 = mysqli_query($connect, "SELECT tbl_leave_records.user_id, `firstname`, `lastname`, `designation`, `branch`, `leave_type`, `requested_from`, `requested_to`, `days_taken` FROM `tbl_user_details` INNER JOIN `tbl_leave_records` ON tbl_user_details.user_id = tbl_leave_records.user_id");
+                                $Query01 = mysqli_query($connect, "SELECT tbl_leave_records.user_id, `firstname`, `lastname`, `designation`, `branch`, `leave_type`, `requested_from`, `requested_to`, `days_taken` FROM `tbl_user_details` 
+                                INNER JOIN `tbl_leave_records` ON tbl_user_details.user_id = tbl_leave_records.user_id
+                                INNER JOIN `tbl_leave_types` ON tbl_leave_types.leave_id = tbl_leave_records.leave_id");
                                     if(!$Query01){
                                         echo "".mysqli_error($connect);
                                     }    
@@ -52,7 +72,9 @@
                                                             <div class="col-8">
                                                                 <span class="card-h1">'.$firstname.' '.$lastname.'</span><br>
                                                                 <span class="card-h2">'.$designation.' - '.$branch.'</span><br>
-                                                                <span class="card-h2">'.$requested_from.' to '.$requested_to.'</span>
+                                                                <span class="card-h3">'.$leave_type.'</span><br>
+                                                                <span class="card-h2"><strong>From: </strong>'.$requested_from.'</span><br>
+                                                                <span class="card-h2-custom"><strong>To: </strong>'.$requested_to.'</span>
                                                             </div>
                                                             <div class="col-4">
                                                                 <div class="row days-taken-margin">
@@ -70,6 +92,12 @@
                                                                 </div> -->
                                                             </div>
                                                         </div>
+                                                        <div class="row">
+                                                            <div class="btn-group" role="group">
+                                                                <a href="" class="btn btn-warning">Approve</a>
+                                                                <a href="" class="btn btn-secondary">Decline</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,6 +105,44 @@
                                     }
                             ?>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 offset-md-1">
+                <div class="card admin-right-card">
+                    <div class="card-body">
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        
+                        <?php
+                            $Query01 = mysqli_query($connect, "SELECT firstname FROM tbl_user_details INNER JOIN tbl_leave_records WHERE tbl_leave_records.user_id = tbl_user_details.user_id");
+                                while($result = mysqli_fetch_assoc($Query01)){
+                                    $hey[] = $result;
+                                }
+                        ?>
+                        <script>
+                            const ctx = document.getElementById('myChart');
+
+                            new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], /** echo employee names here */
+                                datasets: [{
+                                    label: 'Balance (Days)',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    borderWidth: 2
+                                }]
+                                },
+                                options: {
+                                scales: {
+                                    y: {
+                                    beginAtZero: false
+                                    }
+                                }
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

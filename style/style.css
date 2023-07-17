@@ -1,146 +1,219 @@
 body {
-    font-family: "Poppins", sans-serif ;
-    color: rgb(34, 34, 34);
-    background-color: #F5F2EA;
-    font-weight: 400;
-  }
+  font-family: "Poppins", sans-serif ;
+  color: rgb(34, 34, 34);
+  background-color: #F5F2EA;
+  font-weight: 400;
+}
 
-  .login-card{
-    margin-top: 40%;
-    border: 0;
-  }
+.login-card{
+  margin-top: 40%;
+  border: 0;
+}
 
-  .leave-card{
-    margin-top: 2%;
-    border: 0;
-  }
+.main-card{
+  border: 0;
+}
 
-  .admin-left-card{
-    margin-top: 10%;
-    border: 0;
-  }
+.admin-left-card{
+  margin-top: 10%;
+  border: 0;
+  max-height: 90vh;
+  overflow-y: scroll;
+}
 
-  .admin-container{
-    margin-left: 2% !important;
-    margin-right: 2% !important;
-  }
+.admin-container{
+  margin-left: 2% !important;
+  margin-right: 2% !important;
+}
 
-  .header-text{
-    font-weight: 700;
-  }
+.header-text{
+  font-weight: 700;
+}
 
-  .sub-text{
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
+.sub-text{
+  font-size: 0.8rem;
+  font-weight: 600;
+}
 
-  .footer-text{
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: rgb(155, 155, 155);
-    margin-top: 2rem;
-  }
-  .login-input{
-    margin-bottom: 1rem;
-  }
+.footer-text{
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(155, 155, 155);
+  margin-top: 2rem;
+}
 
-  .app-input{
-    margin-bottom: 1rem;
-  }
+.mini-text-bold{
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(184, 182, 177);
+  margin-top: 2rem;
+}
 
-  .btn-success{
-    background-color: #66d670 !important;
-    font-size: 0.9rem;
-    color: black;
-    font-weight: 600;
-    border: 0;
-  }
+.mini-text{
+  font-size: 0.8rem;
+  color: rgb(27, 27, 27);
+  margin-top: 2rem;
+}
 
-  .btn-success:hover{
-    background-color: #59af60 !important;
-    font-size: 0.9rem;
-    color: black;
-    font-weight: 600;
-    border: 0;
-  }
+.th{
+  font-size: 0.8rem !important;
+  color: rgb(27, 27, 27);
+  margin-top: 2rem;
+}
 
-  .app-btn{
-    margin-top: 0.5rem;
-  }
-  .alert-success{
-    background-color: #ccf8d0 !important;
-  }
+.login-input{
+  margin-bottom: 1rem;
+}
 
-  .hr{
-    margin-block-start: 0rem !important;
-    margin-block-end: 0.5rem !important;
-  }
+.app-input{
+  margin-bottom: 1rem;
+}
 
-  .space-top{
-    margin-top: 0.3rem;
-  }
+.btn-success{
+  background-color: #66d670 !important;
+  font-size: 0.9rem;
+  color: black;
+  font-weight: 600;
+  border: 0;
+}
 
-  .card-h0{
-    font-weight: 700;
-    font-size: 3rem;
-    height: fit-content;
-    line-height: 0.8rem;
-    color: #686760;
-  }
-  
-  .card-h1{
-    font-weight: 700;
-    font-size: 1.2rem;
-    height: fit-content;
-    line-height: 0.8rem;
-    color: #686760;
-  }
-  
-  .card-h2{
-    font-weight: 500;
-    font-size: 0.8rem;
-    height: fit-content;
-    line-height: 0.4rem;
-    color: #aaa894;
-  }
+.btn-success:hover{
+  background-color: #59af60 !important;
+  font-size: 0.9rem;
+  color: black;
+  font-weight: 600;
+  border: 0;
+}
 
-  .card-h6{
-    font-weight: 500;
-    font-size: 0.45rem;
-    color: #aaa894;
-  }
+.app-btn{
+  margin-top: 0.5rem;
+}
+.alert-success{
+  background-color: #ccf8d0 !important;
+}
 
-  .accept-btn{
-    text-decoration: none;
-    color: #59af60;
-  }
+.hr{
+  margin-block-start: 0rem !important;
+  margin-block-end: 0.5rem !important;
+}
 
-  .decline-btn{
-    text-decoration: none;
-    color: #af5959;
-  }
-  
-  .accept-btn:hover{
-    text-decoration: none;
-    color: #368f3d;
-  }
+.space-top{
+  margin-top: 0.3rem;
+}
 
-  .decline-btn:hover{
-    text-decoration: none;
-    color: #832f2f;
-  }
+.card-h0{
+  font-weight: 700;
+  font-size: 3rem;
+  height: fit-content;
+  line-height: 0.8rem;
+  color: #686760;
+}
 
-  .request-card{
-    border-radius: 1.3rem;
-    border: 1px solid #f3f3f3a9;
-  }
+.card-h1{
+  font-weight: 700;
+  font-size: 1.2rem;
+  height: fit-content;
+  line-height: 0.8rem;
+  color: #686760;
+  padding-block-end: 0px !important;
+}
 
-  .grey-text{
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #686760;
-  }
+.card-h2{
+  margin-left: 0.1rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  position: relative;
+  top: -0.7rem;
+  color: #aaa894;
+}
 
-  .days-taken-margin{
-    margin-top: 1.3rem !important;
-  }
+.card-h3{
+  margin-left: 0.1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  position: relative;
+  top: -0.7rem;
+  color: #aaa894;
+}
+
+.card-h6{
+  font-weight: 500;
+  font-size: 0.45rem;
+  color: #aaa894;
+}
+
+.accept-btn{
+  text-decoration: none;
+  color: #59af60;
+}
+
+.decline-btn{
+  text-decoration: none;
+  color: #af5959;
+}
+
+.accept-btn:hover{
+  text-decoration: none;
+  color: #368f3d;
+}
+
+.decline-btn:hover{
+  text-decoration: none;
+  color: #832f2f;
+}
+
+.request-card{
+  border-radius: 1.3rem;
+  border: 1px solid #f3f3f3a9;
+}
+
+.grey-text{
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #686760;
+}
+
+.days-taken-margin{
+  margin-top: 1.3rem !important;
+}
+
+.card-h2-custom{
+  margin-left: 0.1rem;
+  font-weight: 400;
+  font-size: 0.8rem;
+  position: relative;
+  top: -1.3rem;
+  color: #aaa894;
+}
+
+.admin-right-card{
+  margin-top: 6%;
+  border: 0;
+}
+
+.nav-link.active {
+  color: #616058 !important;
+}
+
+.custom-nav-link{
+  color: #aaa894 !important;
+  text-decoration: none !important;
+}
+
+.animate__bounceIn {
+  --animate-duration: 0.4s !important;
+}
+
+#dashboard{
+  display: none;
+}
+
+.leave-history-card{
+  height: 11rem !important;
+
+}
+
+.leave-summary-card{
+  height: 7.5rem !important;
+
+}
