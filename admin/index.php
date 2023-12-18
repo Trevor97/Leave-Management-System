@@ -14,26 +14,44 @@
 <body>
     <div class="container admin-container">
         <div class="row">
-            <nav class="navbar navbar-expand-sm bg-light navbar-light">
-                <div class="container-fluid">
-                    <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Active</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                    </ul>
+            <div class="col-md-7 offset-md-1">
+                <div class="card admin-right-card">
+                    <div class="card-body">
+                        <div>
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        
+                        <?php
+                            $Query01 = mysqli_query($connect, "SELECT firstname FROM tbl_user_details INNER JOIN tbl_leave_records WHERE tbl_leave_records.user_id = tbl_user_details.user_id");
+                                while($result = mysqli_fetch_assoc($Query01)){
+                                    $hey[] = $result;
+                                }
+                        ?>
+                        <script>
+                            const ctx = document.getElementById('myChart');
+
+                            new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], /** echo employee names here */
+                                datasets: [{
+                                    label: 'Balance (Days)',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    borderWidth: 2
+                                }]
+                                },
+                                options: {
+                                scales: {
+                                    y: {
+                                    beginAtZero: false
+                                    }
+                                }
+                                }
+                            });
+                        </script>
+                    </div>
                 </div>
-            </nav>
-        </div>
-        <div class="row">
+            </div>
             <div class="col-md-4">
                 <div class="card admin-left-card">
                     <div class="card-body">
@@ -94,8 +112,8 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="btn-group" role="group">
-                                                                <a href="" class="btn btn-warning">Approve</a>
-                                                                <a href="" class="btn btn-secondary">Decline</a>
+                                                                <a href="" class="btn btn-success" onClick="confirmApprove()">Approve</a>
+                                                                <a href="" class="btn btn-outline-danger" onClick="confirmDelete()">Decline</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -108,46 +126,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7 offset-md-1">
-                <div class="card admin-right-card">
-                    <div class="card-body">
-                        <div>
-                            <canvas id="myChart"></canvas>
-                        </div>
-                        
-                        <?php
-                            $Query01 = mysqli_query($connect, "SELECT firstname FROM tbl_user_details INNER JOIN tbl_leave_records WHERE tbl_leave_records.user_id = tbl_user_details.user_id");
-                                while($result = mysqli_fetch_assoc($Query01)){
-                                    $hey[] = $result;
-                                }
-                        ?>
-                        <script>
-                            const ctx = document.getElementById('myChart');
-
-                            new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], /** echo employee names here */
-                                datasets: [{
-                                    label: 'Balance (Days)',
-                                    data: [12, 19, 3, 5, 2, 3],
-                                    borderWidth: 2
-                                }]
-                                },
-                                options: {
-                                scales: {
-                                    y: {
-                                    beginAtZero: false
-                                    }
-                                }
-                                }
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>    
+    <script>
+        function confirmDelete(){
+            alert("Delete?");
+        }
+        function confirmApprove(){
+            alert("Approve?");
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -19,6 +19,7 @@ body {
   border: 0;
   max-height: 90vh;
   overflow-y: scroll;
+  background-color: #00000000 !important;
 }
 
 .admin-container{
