@@ -1,6 +1,8 @@
 <?php
-    include_once "includes/connector.php";
-    session_start();
+    require ('classes/session_class.php');
+
+    Session::init(); 
+    if(Session::get('session_email')){ return header("Location: application.php");}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,64 +38,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-<?php
-    if(isset($_POST['login-btn'])){
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $Query01 = mysqli_query($connect, "SELECT * FROM tbl_credentials WHERE email = '$email' AND password = '$password'");
-            $ret = mysqli_num_rows($Query01);
-
-            if($ret > 0){
-                while($rows = mysqli_fetch_assoc($Query01)){
-                    $status = $rows['status'];
-
-                    switch ($status) {
-                        case 0:
-                            echo "
-                            <script>
-                                Swal.fire({
-                                text: 'Login Failed. Please contact the System Administrator!',
-                                icon: 'question',
-                                timer: 2500
-                                })
-                            </script>
-                                ";
-                            break;
-                        
-                        case 1:
-                            $_SESSION['valid'] = true;
-                            $_SESSION['session_email'] = $email;
-                            echo "
-                            <script>
-                                Swal.fire({
-                                text: 'Login Successful',
-                                icon: 'success',
-                                showConfirmButton: false,
-                                timer: 2500
-                                }).then(function() {
-                                    window.location = 'application.php';
-                                });
-                            </script>
-                                ";
-                            break;
-                        
-                        default:
-                            # code...
-                            break;
-                    }
-                }
-            }else{
-                echo "
-                    <script>
-                        Swal.fire({
-                        text: 'Invalid Credentials',
-                        icon: 'error',
-                        timer: 2500
-                        })
-                    </script>
-                    ";
-            }
-    }
-?>

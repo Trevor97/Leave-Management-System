@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    require ('classes/session_class.php');
+    Session::init();
+    if(!Session::get('session_email')){ return header("Location: index.php");}
     include('includes/connector.php');
     include('includes/functions.php');
 
