@@ -24,6 +24,17 @@
 
             return $stmt;
         }
+
+        public function getUserDetails($email){
+            $sql = "SELECT user_id FROM tbl_user_details WHERE email=:email LIMIT 1";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':email',$email);
+            $stmt->execute();
+
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
+
+            return $stmt;
+        }
     }
 
 ?>
