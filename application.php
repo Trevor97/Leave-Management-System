@@ -62,18 +62,18 @@
                         </div> -->
                         <span>
                             <h4 class="header-text">Please complete the form.</h4>
-                                <form action="application.php" method="POST">
+                                <form action="application.php" method="POST" id="leaveForm">
                                     <!-- Firstname, Lastname -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" name="firstname" value="<?php echo $firstname?>" id="firstname" placeholder="Firstname" class="form-control app-input">
+                                                <input type="text" name="firstname" value="<?php echo $firstname?>" id="firstname" placeholder="Firstname" class="form-control app-input" disabled>
                                                 <label for="firstname">Enter Firstname</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" name="lastname" value="<?php echo $lastname?>" id="lastname" placeholder="Lastname" class="form-control app-input">
+                                                <input type="text" name="lastname" value="<?php echo $lastname?>" id="lastname" placeholder="Lastname" class="form-control app-input" disabled>
                                                 <label for="lastname">Enter Lastname</label>
                                             </div>
                                         </div>
@@ -82,7 +82,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" name="designation" id="designation" value="<?php echo $designation?>" placeholder="Designation" class="form-control app-input">
+                                                <input type="text" name="designation" id="designation" value="<?php echo $designation?>" placeholder="Designation" class="form-control app-input" disabled>
                                                 <label for="designation">Designation</label>
                                             </div>
                                         </div>
@@ -175,7 +175,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-floating">
-                                                <input type="text" name="days_taken" id="days_taken" placeholder="Days Taken" class="form-control app-input" value=" " disabled>
+                                                <input type="text" name="days_taken" id="days_taken" placeholder="Days Taken" class="form-control app-input" value="" disabled>
                                                 <label for="days_taken">Days Taken</label>
                                             </div>
                                         </div>
@@ -235,13 +235,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <textarea name="contact_address" id="contact_address" placeholder="Contact Address" class="form-control app-input" autocomplete="off"><?php echo $p_o_box?></textarea>
+                                                <textarea name="contact_address" id="contact_address" placeholder="Contact Address" class="form-control app-input" autocomplete="off" disabled><?php echo $p_o_box?></textarea>
                                                 <label for="contact_address">Enter Contact Address</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" name="contact_number" id="contact_number" placeholder="Contact Number" value="<?php echo $phone_number?>" class="form-control app-input" autocomplete="off"/>
+                                                <input type="text" name="contact_number" id="contact_number" placeholder="Contact Number" value="<?php echo $phone_number?>" class="form-control app-input" autocomplete="off" disabled/>
                                                 <label for="contact_number">Enter Contact Number</label>
                                             </div>
                                         </div>
@@ -250,7 +250,7 @@
                                     <div class="row">
                                         <div class="col-md-4 offset-md-4">
                                             <div class="d-grid gap-2">
-                                                <button class="btn btn-success app-btn" name="submit-leave" type="submit">Request Leave</button>
+                                                <button class="btn btn-success app-btn" name="submit-leave" id="leaveBtn" type="submit">Request Leave</button>
                                             </div>
                                         </div>
                                     </div>
@@ -419,6 +419,7 @@
         </div>
     </div>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
     <script>
         document.getElementById('hide-leave-form').addEventListener('click', function() {
             document.getElementById('leave-form').style.display = 'none';
@@ -434,57 +435,30 @@
         function calculateDateDifference() {
             var leave_from = new Date(document.getElementById('leave_requested_from').value);
             var leave_to = new Date(document.getElementById('leave_requested_to').value);
-            var difference = leave_to - leave_from;
+            
+            if(leave_from < Date.now() || leave_to < Date.now()){ 
+                return Swal.fire({
+                    text: "Leave FROM or TO date cannot be less than today",
+                    icon: "error", 
+                    confirmButtonColor: "#006b08",
+                });
+            }
+            var difference = leave_to - leave_from; 
+
+            if(isNaN(difference)) return;
+
             var differenceInDays = Math.floor(difference / (1000 * 60 * 60 * 24));
+            
+            if(differenceInDays < 1) {
+                return Swal.fire({
+                    text: "Leave needs to be at least 1 day",
+                    icon: "error", 
+                    confirmButtonColor: "#006b08",
+                });
+            }
+            
             document.getElementById('days_taken').value = differenceInDays;
         }
     </script>
 </body>
 </html>
-
-<?php
-    if(isset($_POST['submit-leave'])){
-        //$email = $_POST['']; replaced with session email
-        //retrieve user id using email
-        $Query01 = mysqli_query($connect, "SELECT user_id FROM tbl_user_details WHERE email = '$session_email'");
-            $rows = mysqli_fetch_assoc($Query01);
-        
-        $user_id = $rows['user_id'];
-        $leave_type = $_POST['leave_type'];
-
-        //retrieve leave id from leave type
-        $Query02 = mysqli_query($connect, "SELECT leave_id FROM  tbl_leave_types WHERE leave_type = '$leave_type'");
-            $rows = mysqli_fetch_assoc($Query02);
-
-        $leave_id = $rows['leave_id'];
-        $requested_from = $_POST['leave_requested_from'];
-        $requested_to = $_POST['leave_requested_to'];
-
-        $start_date = new DateTime($requested_from);
-        $end_date = new DateTime($requested_to);
-        $interval = $start_date->diff($end_date);
-
-        $days_taken = $interval->days;
-        $balance_brought_forward = 0;
-        $previously_taken = 1;
-
-        $Query03 = mysqli_query($connect, "INSERT INTO `tbl_leave_records`(`user_id`, `balance_brought_forward`, `leave_id`, `requested_from`, `requested_to`, `days_taken`, `previously_taken`) VALUES ($user_id,$balance_brought_forward, $leave_id, '$requested_from', '$requested_to', $days_taken, $previously_taken)");
-
-        if(!$Query03){
-            echo "failed: ".mysqli_error($connect);
-            echo "<br><br>Values:<br> User ID ".$user_id.""."<br>Leave ID ".$leave_id."<br>Requested From ". $requested_from."<br> Requested To ". $requested_to."<br>Days Taken ". $days_taken."<br>Previously Taken ".$previously_taken;
-        
-        }else{
-            echo "
-                <script>
-                    Swal.fire({
-                    title: 'Request Sent!',
-                    text: 'Your leave request has been sent. You will receive communication in due course',
-                    icon: 'success',
-                    timer: 6000
-                    })
-                </script>
-                    ";
-        }
-    }
-?>
