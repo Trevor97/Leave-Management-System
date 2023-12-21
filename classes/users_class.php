@@ -1,14 +1,12 @@
 <?php  
-    require ('../config/db_config.php');
-
-    class Users extends DBConnection{
+    class Users {
         private $db;
         public $email;
         public $password;
 
 
-        public function __construct(){
-           $this->db = parent::connect();
+        public function __construct(PDO $db){
+           $this->db = $db;
         }
 
         public function login(){
@@ -26,6 +24,8 @@
         }
 
         public function getUserDetails($email){
+            $db = $this->db;
+
             $sql = "SELECT user_id FROM tbl_user_details WHERE email=:email LIMIT 1";
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':email',$email);

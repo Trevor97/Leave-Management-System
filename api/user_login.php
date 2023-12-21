@@ -1,12 +1,13 @@
 <?php
     header('Content-type: application/json');
 
+    require ('../config/db_config.php');
     require ('../classes/session_class.php');
     require ('../classes/users_class.php');
 
     $json_str = file_get_contents('php://input');
     $data =  json_decode($json_str,true);
-    $user = new Users;
+    $user = new Users(DBConnection::connect());
 
     if($data){
         $email = $data['email'];
