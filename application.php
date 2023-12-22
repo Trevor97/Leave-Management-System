@@ -67,13 +67,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" name="firstname" value="<?php echo $firstname?>" id="firstname" placeholder="Firstname" class="form-control app-input" disabled>
+                                                <input type="text" name="firstname" value="" id="firstname" placeholder="Firstname" class="form-control app-input" disabled>
                                                 <label for="firstname">Enter Firstname</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" name="lastname" value="<?php echo $lastname?>" id="lastname" placeholder="Lastname" class="form-control app-input" disabled>
+                                                <input type="text" name="lastname" value="" id="lastname" placeholder="Lastname" class="form-control app-input" disabled>
                                                 <label for="lastname">Enter Lastname</label>
                                             </div>
                                         </div>
@@ -82,7 +82,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" name="designation" id="designation" value="<?php echo $designation?>" placeholder="Designation" class="form-control app-input" disabled>
+                                                <input type="text" name="designation" id="designation" value="" placeholder="Designation" class="form-control app-input" disabled>
                                                 <label for="designation">Designation</label>
                                             </div>
                                         </div>
@@ -142,7 +142,7 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-floating">
-                                                <input type="number" name="days_entitled" value="<?php echo $days_entitled?>" id="days_entitled" placeholder="Days Entitled" class="form-control app-input" autocomplete="off" disabled>
+                                                <input type="number" name="days_entitled" value="" id="days_entitled" placeholder="Days Entitled" class="form-control app-input" autocomplete="off" disabled>
                                                 <label for="days_entitled">Total Days Entitled</label>
                                             </div>
                                         </div>
@@ -235,13 +235,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <textarea name="contact_address" id="contact_address" placeholder="Contact Address" class="form-control app-input" autocomplete="off" disabled><?php echo $p_o_box?></textarea>
+                                                <textarea name="contact_address" id="contact_address" placeholder="Contact Address" class="form-control app-input" autocomplete="off" disabled></textarea>
                                                 <label for="contact_address">Enter Contact Address</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
-                                                <input type="text" name="contact_number" id="contact_number" placeholder="Contact Number" value="<?php echo $phone_number?>" class="form-control app-input" autocomplete="off" disabled/>
+                                                <input type="text" name="contact_number" id="contact_number" placeholder="Contact Number" value="" class="form-control app-input" autocomplete="off" disabled/>
                                                 <label for="contact_number">Enter Contact Number</label>
                                             </div>
                                         </div>
@@ -280,7 +280,7 @@
                                                                     <span class="mini-text-bold">Name</span>
                                                                 </div>
                                                                 <div class="col-md-6 text-right">
-                                                                    <span class="mini-text"><?php echo $firstname." ".$lastname; ?></span>
+                                                                    <span class="mini-text" id="dashboard_name"> </span>
                                                                 </div>
                                                             </div>
 
@@ -290,7 +290,7 @@
                                                                     <span class="mini-text-bold">Designation</span>
                                                                 </div>
                                                                 <div class="col-md-6 text-right">
-                                                                    <span class="mini-text"><?php echo $designation?></span>
+                                                                    <span class="mini-text" id="dashboard_designation"> </span>
                                                                 </div>
                                                             </div>
 
@@ -300,7 +300,7 @@
                                                                     <span class="mini-text-bold">Email</span>
                                                                 </div>
                                                                 <div class="col-md-6 text-right">
-                                                                    <span class="mini-text"><?php echo $email?></span>
+                                                                    <span class="mini-text" id="dashboard_email"> </span>
                                                                 </div>
                                                             </div>
 
@@ -310,7 +310,7 @@
                                                                     <span class="mini-text-bold">Phone Number</span>
                                                                 </div>
                                                                 <div class="col-md-6 text-right">
-                                                                    <span class="mini-text"><?php echo $phone_number?></span>
+                                                                    <span class="mini-text" id="dashboard_phone"> </span>
                                                                 </div>
                                                             </div>
 
@@ -320,7 +320,7 @@
                                                                     <span class="mini-text-bold">Address</span>
                                                                 </div>
                                                                 <div class="col-md-6 text-right">
-                                                                    <span class="mini-text"><?php echo $p_o_box?></span>
+                                                                    <span class="mini-text" id="dashboard_address"> </span>
                                                                 </div>
                                                             </div>
 
@@ -330,7 +330,7 @@
                                                                     <span class="mini-text-bold">Days Entitled</span>
                                                                 </div>
                                                                 <div class="col-md-6 text-right">
-                                                                    <span class="mini-text"><?php echo $days_entitled?></span>
+                                                                    <span class="mini-text" id="dashboard_days_entitled"> </span>
                                                                 </div>
                                                             </div>
 

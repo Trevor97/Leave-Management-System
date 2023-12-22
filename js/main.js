@@ -179,3 +179,56 @@ if (leaveForm) {
       });
   });
 }
+
+const getUserDetails = () => {
+  const {
+    firstname,
+    lastname,
+    designation,
+    days_entitled,
+    contact_address,
+    contact_number,
+  } = leaveForm.elements;
+  const dashboard_name = document.querySelector("#dashboard_name");
+  const dashboard_email = document.querySelector("#dashboard_email");
+  const dashboard_designation = document.querySelector(
+    "#dashboard_designation"
+  );
+  const dashboard_phone = document.querySelector("#dashboard_phone");
+  const dashboard_address = document.querySelector("#dashboard_address");
+  const dashboard_days_entitled = document.querySelector(
+    "#dashboard_days_entitled"
+  );
+
+  fetch("api/get_user_details.php", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(async (response) => {
+      if (!response.ok) throw await response.json();
+      return response.json();
+    })
+    .then((response) => {
+      const { user } = response;
+
+      firstname.value = user.firstname;
+      lastname.value = user.lastname;
+      designation.value = user.designation;
+      days_entitled.value = user.days_entitled;
+      contact_address.value = user.p_o_box;
+      contact_number.value = user.phone_number;
+      dashboard_name.innerHTML = user.firstname + " " + user.lastname;
+      dashboard_days_entitled.innerHTML = user.days_entitled;
+      dashboard_email.innerHTML = user.email;
+      dashboard_phone.innerHTML = user.phone_number;
+      dashboard_designation.innerHTML = user.designation;
+      dashboard_address.innerHTML = user.p_o_box;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+getUserDetails();
