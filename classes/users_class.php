@@ -26,7 +26,7 @@
         public function getUserDetails($email){
             $db = $this->db;
 
-            $sql = "SELECT user_id FROM tbl_user_details WHERE email=:email LIMIT 1";
+            $sql = "SELECT * FROM tbl_user_details WHERE email=:email LIMIT 1";
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':email',$email);
             $stmt->execute();
